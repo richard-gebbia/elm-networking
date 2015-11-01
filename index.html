@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="http://localhost:3000/elm.js"></script>
+    <script>
+        var elm;
+        var socket = io();
+        socket.emit('getClientID', {});
+        
+        socket.on('clientID', function (data) {
+            console.log(data);
+
+            // start up elm once we have our client ID
+            elm = Elm.fullscreen(Elm.Counters, {
+                clientID: data.clientID,
+                setOther: 0
+            });
+            elm.ports.sideEffects.subscribe(function (request) {
+                if (request === null) {
+                    return;
+                }
+
+                socket.emit(request.requestType, request);
+            });
+        });
+
+        socket.on('setOther', function (data) {
+            if (!elm) {
+                return;
+            }
+
+            elm.ports.setOther.send(data.value);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+{
+  "name": "elm-networking",
+  "version": "1.0.0",
+  "description": "An example elm project that talks to a socket.io server.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/richard-gebbia/elm-networking.git"
+  },
+  "keywords": [
+    "elm"
+  ],
+  "author": "Richard Gebbia",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/richard-gebbia/elm-networking/issues"
+  },
+  "homepage": "https://github.com/richard-gebbia/elm-networking",
+  "dependencies": {
+    "express": "^4.13.3",
+    "socket.io": "^1.3.7"
+  }
+}
